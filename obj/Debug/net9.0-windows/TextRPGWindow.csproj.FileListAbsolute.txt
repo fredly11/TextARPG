@@ -1,0 +1,14 @@
+D:\Development\School\CSE310\Sprint 1\TextRPGWindow\bin\Debug\net9.0-windows\TextRPGWindow.exe
+D:\Development\School\CSE310\Sprint 1\TextRPGWindow\bin\Debug\net9.0-windows\TextRPGWindow.deps.json
+D:\Development\School\CSE310\Sprint 1\TextRPGWindow\bin\Debug\net9.0-windows\TextRPGWindow.runtimeconfig.json
+D:\Development\School\CSE310\Sprint 1\TextRPGWindow\bin\Debug\net9.0-windows\TextRPGWindow.dll
+D:\Development\School\CSE310\Sprint 1\TextRPGWindow\bin\Debug\net9.0-windows\TextRPGWindow.pdb
+D:\Development\School\CSE310\Sprint 1\TextRPGWindow\obj\Debug\net9.0-windows\TextRPGWindow.GeneratedMSBuildEditorConfig.editorconfig
+D:\Development\School\CSE310\Sprint 1\TextRPGWindow\obj\Debug\net9.0-windows\TextRPGWindow.AssemblyInfoInputs.cache
+D:\Development\School\CSE310\Sprint 1\TextRPGWindow\obj\Debug\net9.0-windows\TextRPGWindow.AssemblyInfo.cs
+D:\Development\School\CSE310\Sprint 1\TextRPGWindow\obj\Debug\net9.0-windows\TextRPGWindow.csproj.CoreCompileInputs.cache
+D:\Development\School\CSE310\Sprint 1\TextRPGWindow\obj\Debug\net9.0-windows\TextRPGWindow.dll
+D:\Development\School\CSE310\Sprint 1\TextRPGWindow\obj\Debug\net9.0-windows\refint\TextRPGWindow.dll
+D:\Development\School\CSE310\Sprint 1\TextRPGWindow\obj\Debug\net9.0-windows\TextRPGWindow.pdb
+D:\Development\School\CSE310\Sprint 1\TextRPGWindow\obj\Debug\net9.0-windows\TextRPGWindow.genruntimeconfig.cache
+D:\Development\School\CSE310\Sprint 1\TextRPGWindow\obj\Debug\net9.0-windows\ref\TextRPGWindow.dll
