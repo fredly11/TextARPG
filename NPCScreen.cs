@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 public class NPCScreen : Screen
 {
     public string NPCName { get; set; }
@@ -16,28 +20,55 @@ public class NPCScreen : Screen
 
     public override void Initialize()
     {
-        Display = new string[]
+        // Helper function to wrap text
+        static List<string> WrapText(string text, int maxWidth)
         {
-            $"          {NPCName}",
-            "----------------------------------------------------------------------------",
-            $"{Description}",
-            "----------------------------------------------------------------------------",
-            "                    MESSAGE",
-            CurrentMessage,
-            "----------------------------------------------------------------------------",
-            "                DIALOGUE OPTIONS"
-        };
+            var wrappedLines = new List<string>();
+            var words = text.Split(' ');
 
-        // Add dialogue options
-        for (int i = 0; i < DialogueOptions.Count; i++)
-        {
-            Display = Display.Concat(new[] { $"{i + 1}. {DialogueOptions[i]}" }).ToArray();
+            string currentLine = "";
+            foreach (var word in words)
+            {
+                if (currentLine.Length + word.Length + 1 > maxWidth)
+                {
+                    wrappedLines.Add(currentLine.Trim());
+                    currentLine = "";
+                }
+                currentLine += word + " ";
+            }
+
+            if (!string.IsNullOrWhiteSpace(currentLine))
+                wrappedLines.Add(currentLine.Trim());
+
+            return wrappedLines;
         }
 
-        Display = Display.Concat(new[] {
-            "----------------------------------------------------------------------------",
-            "LEAVE - Return to location"
-        }).ToArray();
+        var displayList = new List<string>
+        {
+            $"          {NPCName}",
+            "----------------------------------------------------------------------------".PadRight(73).Substring(0, 73)
+        };
+
+        // Wrap and add the description
+        displayList.AddRange(WrapText(Description, 73));
+        displayList.Add("----------------------------------------------------------------------------".PadRight(73).Substring(0, 73));
+
+        // Add current message
+        displayList.Add("                    MESSAGE");
+        displayList.AddRange(WrapText(CurrentMessage, 73));
+        displayList.Add("----------------------------------------------------------------------------".PadRight(73).Substring(0, 73));
+
+        // Add dialogue options
+        displayList.Add("                DIALOGUE OPTIONS");
+        for (int i = 0; i < DialogueOptions.Count; i++)
+        {
+            displayList.Add($"{i + 1}. {DialogueOptions[i]}");
+        }
+
+        displayList.Add("----------------------------------------------------------------------------".PadRight(73).Substring(0, 73));
+        displayList.Add("LEAVE - Return to location");
+
+        Display = displayList.ToArray();
     }
 
     public override void HandleInput(string input)
@@ -45,22 +76,20 @@ public class NPCScreen : Screen
         if (input.ToLower() == "leave")
         {
             GameManager.SystemMessage = "Returning to the location...";
-            // Transition back to the location screen
-            GameManager.Instance.SetScreen(GameManager.Instance.previousScreen);  // Change this to the correct location screen
+            GameManager.Instance.SetScreen(GameManager.Instance.previousScreen);
             return;
         }
 
-        // Handle dialogue option selection (e.g., "1", "2", etc.)
         if (int.TryParse(input, out int dialogueChoice) && dialogueChoice >= 1 && dialogueChoice <= DialogueOptions.Count)
         {
-            // Update NPC's message with the corresponding response
             CurrentMessage = DialogueResponses[dialogueChoice - 1];
-            GameManager.SystemMessage = $"NPC responds: {CurrentMessage}";
-            Initialize();  // Re-initialize the screen to update the display
+            Initialize();
+
+            // Refresh the display
+            GameManager.Instance.UpdateDisplay();
             return;
         }
 
-        // If the input doesn't match a valid dialogue option or "leave", show an invalid input message
         GameManager.SystemMessage = "Invalid dialogue option. Please try again.";
     }
 }

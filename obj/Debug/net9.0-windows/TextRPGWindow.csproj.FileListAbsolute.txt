@@ -12,3 +12,4 @@ D:\Development\School\CSE310\Sprint 1\TextRPGWindow\obj\Debug\net9.0-windows\ref
 D:\Development\School\CSE310\Sprint 1\TextRPGWindow\obj\Debug\net9.0-windows\TextRPGWindow.pdb
 D:\Development\School\CSE310\Sprint 1\TextRPGWindow\obj\Debug\net9.0-windows\TextRPGWindow.genruntimeconfig.cache
 D:\Development\School\CSE310\Sprint 1\TextRPGWindow\obj\Debug\net9.0-windows\ref\TextRPGWindow.dll
+D:\Development\School\CSE310\Sprint 1\TextRPGWindow\obj\Debug\net9.0-windows\TextRPGWindow.sourcelink.json

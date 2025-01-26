@@ -149,9 +149,11 @@ private void SpendPoints(string input)
     }
 
     player.AvailableStatPoints -= amount;
+    player.UpdateStats(); // Recalculate stats after spending points
     GameManager.SystemMessage = $"{amount} points spent on {stat}.";
     UpdateDisplay();
 }
+
 
 
     private void ViewAbilityTree()

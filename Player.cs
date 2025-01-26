@@ -30,11 +30,17 @@ public class Player
         Enduritution = 10;
         AvailableStatPoints = 5;
 
-        Health = 50 + 4 * Enduritution;
-        MovementPoints = 5 + Nimbility / 2;
-        Energy = 20 + 2 * Mysticigence;
+        UpdateStats();
 
         BasicManeuverAbilities = new List<Ability> { new Guard(), new Circle(), new Flee(), new Circle(), new Flee(), new Circle(), new Flee() };
         BasicStrikeAbilities = new List<Ability> { new Strike(), new Cleave() };
+    }
+
+    // Function to update derived stats
+    public void UpdateStats()
+    {
+        Health = 50 + 4 * Enduritution;
+        MovementPoints = 5 + Nimbility / 2;
+        Energy = 20 + 2 * Mysticigence;
     }
 }

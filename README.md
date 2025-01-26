@@ -14,7 +14,7 @@ This program uses the Windows Forms library and drawing library for creating the
 # Useful Websites
 
 - [Microsoft Windows Forms Documentation](https://learn.microsoft.com/en-us/dotnet/desktop/winforms/?view=netdesktop-9.0)
-- [Web Site Name](http://url.link.goes.here)
+- [Chat GPT](https://chatgpt.com)
 
 # Future Work
 
