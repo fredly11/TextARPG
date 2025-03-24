@@ -1,6 +1,5 @@
 using System;
 using System.Diagnostics;
-using Locations; 
 
 public class MainMenuScreen : Screen
 {
@@ -28,7 +27,8 @@ public class MainMenuScreen : Screen
         {
             case "1":
                 GameManager.SystemMessage = "Starting a new game...";
-                GameManager.Instance.SetScreen(new TownSquare(GameManager.Instance)); 
+                LocationScreen townSquareScreen = GameManager.Instance.GetLocationScreen("Town Square");
+                GameManager.Instance.SetScreen(townSquareScreen);
                 break;
 
             case "2":

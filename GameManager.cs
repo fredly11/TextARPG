@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using TextRPGWindow;
 
-// Class that holds all of the essential game data and holds the current screen for display
 public class GameManager
 {
     public Screen currentScreen;
@@ -13,8 +13,9 @@ public class GameManager
     private static GameManager _instance;
     public static GameManager Instance => _instance ??= new GameManager();
 
-    private TextBox _gameOutput; 
-    private Dictionary<string, LocationScreen> locationCache;
+    private TextBox _gameOutput;
+    private Dictionary<string, LocationScreen> locationCache; // Cache for Location Screens
+    private DatabaseManager _dbManager;  // Added DatabaseManager for dynamic loading of locations
 
     public Player player;
 
@@ -28,30 +29,30 @@ public class GameManager
     {
         currentScreen = new MainMenuScreen();
         locationCache = new Dictionary<string, LocationScreen>();
+        _dbManager = new DatabaseManager();  // Initialize the DatabaseManager
         player = new Player();
     }
 
-
-// Function that creates new location objects when loaded
-//TODO: adjust to function dynamilcally with any number of location screens
-public LocationScreen GetLocationScreen(string locationName)
-{
-    if (!locationCache.ContainsKey(locationName))
+    // Function that loads locations dynamically from the database and caches them
+    public LocationScreen GetLocationScreen(string locationName)
     {
-        LocationScreen locationScreen = locationName switch
+        if (!locationCache.ContainsKey(locationName))
         {
-            "Forest Glade" => new Locations.ForestGlade(this),
-            "Mountain Pass" => new Locations.MountainPass(this), 
-            "Town Square" => new Locations.TownSquare(this),
-            _ => throw new Exception($"Location '{locationName}' not found.")
-        };
-        locationCache[locationName] = locationScreen;
+            // Fetch location data from the database
+            LocationScreen locationScreen = _dbManager.GetLocationByName(locationName, this);
+
+            if (locationScreen == null)
+            {
+                throw new Exception($"Location '{locationName}' not found in the database.");
+            }
+
+            // Cache the location screen
+            locationCache[locationName] = locationScreen;
+        }
+        return locationCache[locationName];
     }
-    return locationCache[locationName];
-}
 
-
-// loads a new screen and updates the display.
+    // Function to load a new screen and update the display
     public void SetScreen(Screen screen)
     {
         Debug.WriteLine("setting screen...");
@@ -74,7 +75,7 @@ public LocationScreen GetLocationScreen(string locationName)
         }
     }
 
-// Processes the user's input by sending input to the screen for unique handling
+    // Function to process the user's input by sending input to the screen for unique handling
     public void ProcessInput(string input)
     {
         if (currentScreen == null)
@@ -87,7 +88,7 @@ public LocationScreen GetLocationScreen(string locationName)
         currentScreen.HandleInput(input);
     }
 
-    // Updates the display and checks there is a screen and gameoutput object
+    // Updates the display and ensures the screen and game output are properly initialized
     public void UpdateDisplay()
     {
         if (_gameOutput == null)

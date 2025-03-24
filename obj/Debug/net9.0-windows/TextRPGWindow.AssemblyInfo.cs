@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TextRPGWindow")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dfa3ae3c385e4c11e12628407a0071400bb503ff")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ff5faf03f702ca17604f7c7e5f01744c324fdce7")]
 [assembly: System.Reflection.AssemblyProductAttribute("TextRPGWindow")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TextRPGWindow")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

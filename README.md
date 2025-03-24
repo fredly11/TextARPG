@@ -4,7 +4,7 @@ This program is a text-based RPG written in C# for the purpose of practicing C# 
 a customizable console to act as the display and user interface. The display is centralized around an abstract Screen class that holds the data for what to render on the form and is used as the basis for some of the important game elements such as menus, locations, and NPC conversations. The program is designed to allow for designing any number of custom, interconnected locations, NPCs, and battles using the various types of Screen class.
 
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/Tydk_lykgNM)
 
 # Development Environment
 

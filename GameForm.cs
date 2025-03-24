@@ -1,6 +1,8 @@
+using MySql.Data.MySqlClient;
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 public class GameForm : Form
@@ -103,10 +105,15 @@ private void InputBox_KeyDown(object sender, KeyEventArgs e)
     }
 }
 
-//Main function for running the program
+    //Main function for running the program
+    [DllImport("kernel32.dll")]
+    static extern bool AllocConsole();
+
     [STAThread]
     public static void Main()
     {
+        AllocConsole(); 
+
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
         Application.Run(new GameForm());
